@@ -40,8 +40,8 @@ import feign.form.MultipartEncodedDataProcessor;
 public class SpringMultipartEncodedDataProcessor extends MultipartEncodedDataProcessor {
 
   private static final List<HttpMessageConverter<?>>
-      converters =
-      new RestTemplate().getMessageConverters();
+          converters =
+          new RestTemplate().getMessageConverters();
   private static final HttpHeaders jsonHeaders = new HttpHeaders();
 
   static {
@@ -81,7 +81,7 @@ public class SpringMultipartEncodedDataProcessor extends MultipartEncodedDataPro
       try {
         for (MultipartFile mpf : multipartFiles) {
           writeByteArray(output, writer, name, mpf.getOriginalFilename(), mpf.getContentType(),
-              mpf.getBytes());
+                  mpf.getBytes());
         }
       } catch (IOException e) {
         throw new EncodeException("Can't encode MultipartFile", e);
@@ -102,7 +102,7 @@ public class SpringMultipartEncodedDataProcessor extends MultipartEncodedDataPro
       if (messageConverter.canWrite(requestType, requestContentType)) {
         try {
           ((HttpMessageConverter<Object>) messageConverter)
-              .write(value, requestContentType, dummyRequest);
+                  .write(value, requestContentType, dummyRequest);
           writer.append("Content-Disposition: form-data; name=\"" + name + "\"").append(CRLF);
           writer.append("Content-Type: application/json; charset=UTF-8").append(CRLF);
           String test = ((ByteArrayOutputStream) dummyRequest.getBody()).toString("UTF-8");

@@ -76,10 +76,10 @@ public class MultipartEncodedDataProcessor implements FormDataProcessor {
     }
 
     val contentType = new StringBuilder()
-        .append(CONTENT_TYPE)
-        .append("; boundary=")
-        .append(boundary)
-        .toString();
+            .append(CONTENT_TYPE)
+            .append("; boundary=")
+            .append(boundary)
+            .toString();
 
     template.header("Content-Type", contentType);
     template.body(outputStream.toByteArray(), UTF_8);
@@ -183,19 +183,19 @@ public class MultipartEncodedDataProcessor implements FormDataProcessor {
   private void writeFileMeta(PrintWriter writer, String name, String fileName,
                              String contentValue) {
     val contentDesposition = new StringBuilder()
-        .append("Content-Disposition: form-data; name=\"").append(name).append("\"; ")
-        .append("filename=\"").append(fileName).append("\"")
-        .toString();
+            .append("Content-Disposition: form-data; name=\"").append(name).append("\"; ")
+            .append("filename=\"").append(fileName).append("\"")
+            .toString();
 
     if (contentValue == null) {
       contentValue = fileName != null
-          ? URLConnection.guessContentTypeFromName(fileName)
-          : "application/octet-stream";
+              ? URLConnection.guessContentTypeFromName(fileName)
+              : "application/octet-stream";
     }
     val contentType = new StringBuilder()
-        .append("Content-Type: ")
-        .append(contentValue)
-        .toString();
+            .append("Content-Type: ")
+            .append(contentValue)
+            .toString();
 
     writer.append(contentDesposition).append(CRLF);
     writer.append(contentType).append(CRLF);
